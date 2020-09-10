@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.bootstrap.min.css">
+	<link href="css/style.css" rel="stylesheet">
+	<title></title>
+</head>
+<body>
+<div class="blankspace">
+
+<h1>Detail Contract</h1>
+
+<form th:action="@{/add-contract/submit}" th:object="${contract}" method = "POST">
+	
+	<label>Contract No :</label>
+	<input id="form_add" class="form-control" type="number"   name="contract_no"  required/>
+	
+	<label>Name :</label>
+	<input id="form_add" class="form-control" type="text"   name="name"  required/>
+	
+	<label>Total Tenor :</label>
+	<input id="form_add" class="form-control" type="number"   name="total_tenor"  required/>
+	
+	<label>Tanggal Kredit :</label>
+	<input id="form_add" class="form-control" type="date"   name="tanggal_kredit_input"  required/>
+	
+	<label>Rate Kredit :</label>
+	<input id="form_add" class="form-control" type="number"   name="rate_kredit"  required/>
+	
+	<label>Pokok Hutang :</label>
+	<input id="form_add" class="form-control" type="number"   name="pokok_hutang"  required/>
+	
+	
+	<button class="btn btn-success btn-large" type="submit" style=" margin-bottom: 10px; ">Simpan</button>
+</form>
+		
+	<br>	
+		
+		<form th:action="@{/bayar-kontrak}" method = "POST">
+		<h1>Pembayaran</h1>
+		<label>Total Bayar :</label>
+		<input id="form_add" class="form-control" type="number" name="total_bayar"/>
+		<label>Contract No :</label>
+		<input id="form_add" class="form-control" type="number"   name="contract_no"  required/>
+		<button class="btn btn-success btn-large" type="submit" style=" margin-bottom: 10px; ">Bayar</button>
+		</form>
+		
+	<br>
+	
+	<table id="table">
+		<thead>
+			<tr>
+				<th>Contract No</th>
+				<th>Tenor</th>
+				<th>Tanggal Kredit</th>
+				<th>Angsuran</th>
+				<th>Bunga</th>
+				<th>Bayar Angsuran</th>
+				<th>Bayar Bunga</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="kontrak : ${seluruh_contract}">
+				<td th:text="${kontrak.contract_no}"></td>
+				<td th:text="${kontrak.tenor_ke}"></td>
+				<td th:text="${kontrak.tanggal_kredit}"></td>
+				<td th:text="${kontrak.angsuran}"></td>
+				<td th:text="${kontrak.bunga}"></td>
+				<td th:text="${kontrak.bayar_angsuran}"></td>
+				<td th:text="${kontrak.bayar_bunga}"></td>
+			</tr>
+		</tbody>
+	</table>
+	
+	
+
+
+
+
+</div>
+	<script type="text/javascript" src="/media/js/site.js?_=994321fabf3873df746bb8bbccd1886a"></script>
+	<script type="text/javascript" src="/media/js/dynamic.php?comments-page=extensions%2Fbuttons%2Fexamples%2Fstyling%2Fbootstrap.html" async></script>
+	<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.bootstrap.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.colVis.min.js"></script>
+	<script type="text/javascript" language="javascript" src="../../../../examples/resources/demo.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+	<script type="text/javascript" class="init"></script>
+</body>
+
+</html>
